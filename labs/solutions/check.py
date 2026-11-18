@@ -147,6 +147,15 @@ def lab_2_4():
     assert [r['action_id'] for r in rows('action_grading_reference.csv')] == list(P.ACTION_KEY)
     print('2.4 rules per scenario:', P.SCENARIO_KEY)
     assert P.SCENARIO_KEY['S8'] == [], 'S8 is an action with confirmation (A6), not a hand-off'
+    ref = rows('action_grading_reference.csv')
+    assert all(r['confirmation_text'] for r in ref), 'every action has a reference confirmation text'
+    assert [r['action_id'] for r in ref if r['handoff_rule']] == ['A5'], 'only A5 is governed by a hand-off rule (H6)'
+    import csv as _csv
+    cov = list(_csv.DictReader((LABS / 'solutions' / 'coverage_reference.csv').open(encoding='utf-8-sig')))
+    tmpl = rows('coverage_template.csv')
+    assert [r['item'] for r in cov] == [r['item'] for r in tmpl], 'the reference covers every row of the template'
+    assert all(r['success_path'] and r['failure_path'] and r['refusal_or_handoff_path'] for r in cov), 'no empty cell'
+    print('2.4 coverage reference:', len(cov), 'rows, no empty cell')
 
 
 class Proto(HTMLParser):

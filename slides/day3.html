@@ -9,7 +9,19 @@
 <!-- الجلسة 1 -->
 
 <section class="slide section" id="s1" data-auto="section" data-session="1">
-  <aside class="notes"><p>نحو 35 دقيقة قبل المختبر: مراجعة اليوم الثاني بسؤال (5)، والشرح (25)، ونقطة التحقق (5)؛ ثم المختبر 3.1، 35 دقيقة.</p></aside>
+  <aside class="notes"><p>نحو 35 دقيقة قبل المختبر: مراجعة المختبر 2.4 (4)، ومراجعة اليوم الثاني بسؤال (4)، والشرح (22)، ونقطة التحقق (5)؛ ثم المختبر 3.1، 35 دقيقة.</p></aside>
+</section>
+
+<section class="slide" id="debrief-2-4" data-lo="LO3">
+  <div class="kicker">ما أظهره المختبر 2.4</div>
+  <h2>سبعة مواقف تحويل، وموقف واحد هو إجراء بتأكيد</h2>
+  <table class="t small">
+    <tr><th>الموقف</th><th>القواعد</th></tr>
+    <tr><td>S1 طلب موظف · S3 أولوية طبية · S4 لم يُفهم مرتين</td><td>H1 · H3 · H2، ومعها H8</td></tr>
+    <tr><td>S2 تقسيط · S5 إيقاف الإمداد · S6 شكوى · S7 ليلًا</td><td>H4 · H6 · H5 · H7، ومعها H8</td></tr>
+    <tr class="hl"><td>S8 مشاركة السجل مع المالك</td><td>لا قاعدة: الإجراء A6 بتأكيد م2</td></tr>
+  </table>
+  <aside class="notes"><p>أربع دقائق في أول اليوم. H8 (السؤال قبل النقل وبطاقة التحويل) تنطبق على كل تحويل. في S2 خطة السداد إلى الفوترة، وحجز إعادة القراءة ينفذه الوكيل بتأكيد. من <code>check.py 2.4</code>.</p></aside>
 </section>
 
 <section class="slide" id="review-day2" data-lo="LO3">
@@ -25,7 +37,7 @@
     </div>
     <div class="callout tip why"><b>لماذا.</b> الأثر ق2 (تكلفة، وموعد يُحرَّر)، ولا يمس إلا المقاول: تأكيد صريح في خطوة مستقلة يذكر الرسوم.</div>
   </div>
-  <aside class="notes"><p>الإجابة: د. خمس دقائق. اربط بالتراجع الحقيقي: حجز الموعد للمقاول دقائق بعد الإلغاء يجعل زر التراجع يعيد العالم كما كان.</p></aside>
+  <aside class="notes"><p>الإجابة: د. أربع دقائق. اربط بالتراجع الحقيقي: حجز الموعد للمقاول دقائق بعد الإلغاء يجعل زر التراجع يعيد العالم كما كان.</p></aside>
 </section>
 
 <section class="slide" id="streaming-a11y" data-lo="LO4">
@@ -43,7 +55,7 @@
 </section>
 
 <section class="slide" id="live-regions" data-lo="LO4">
-  <div class="kicker">المناطق الحية</div>
+  <div class="kicker">المناطق الحية (live regions)</div>
   <h2>المنطقة الحية تخبر قارئ الشاشة أن محتواها يتغير</h2>
   <table class="t small">
     <tr><th>الترميز</th><th>متى</th></tr>
@@ -76,11 +88,11 @@
   <div class="kicker">الأسماء والتسميات والأخطاء</div>
   <h2>قارئ الشاشة يقرأ الاسم، لا الشكل</h2>
   <div class="cols cols-2">
-    <div class="card c-coral"><h4>شكل بلا اسم</h4><ul class="small mb0"><li>زر سهم دون اسم: «زر»</li><li>خانة بنص مؤقت يختفي حين تكتب</li><li>خطأ بلون أحمر فقط</li></ul></div>
-    <div class="card c-teal"><h4>اسم يُقرأ</h4><ul class="small mb0"><li><code>aria-label="إرسال"</code> على الزر</li><li><code>label</code> ظاهر للخانة</li><li>نص الخطأ، ويُعلن</li></ul></div>
+    <div class="card c-coral"><h4>شكل بلا اسم</h4><ul class="small mb0"><li>زر «إرفاق المخطط» أيقونة مشبك دون اسم</li><li>خانة «رقم الرخصة» عنوانها داخلها ويختفي حين تكتب</li><li>تاريخ الحفر الخاطئ يُعلَّم بإطار برتقالي فقط</li></ul></div>
+    <div class="card c-teal"><h4>اسم يُقرأ</h4><ul class="small mb0"><li><code>aria-label="إرفاق المخطط"</code> على الزر</li><li><code>label</code> ظاهر «رقم الرخصة» فوق الخانة</li><li>«التاريخ قبل موعد الفحص» نصًا، ويُعلن</li></ul></div>
   </div>
-  <div class="caption">WCAG 2.2: 4.1.2 Name, Role, Value (A)؛ 3.3.2 Labels or Instructions (A)؛ 3.3.1 Error Identification (A)؛ 1.4.1 Use of Color (A).</div>
-  <aside class="notes"><p>مثال من بوابة المقاولين: زر «رفع المخطط» أيقونة سحابة، يقرؤه قارئ الشاشة «زر». واللغة: <code>lang</code> على الصفحة يحدد صوت القارئ ونطقه؛ صفحة عربية معلنة إنجليزية تُقرأ بنطق إنجليزي (3.1.1 Language of Page، المستوى A).</p></aside>
+  <div class="caption">WCAG 2.2: 4.1.2 Name, Role, Value (A)؛ 3.3.2 Labels or Instructions (A)؛ 3.3.1 Error Identification (A).</div>
+  <aside class="notes"><p>الأمثلة من بوابة المقاولين. واللغة: <code>lang</code> على الصفحة يحدد صوت القارئ ونطقه؛ صفحة عربية معلنة إنجليزية تُقرأ بنطق إنجليزي (3.1.1 Language of Page، المستوى A).</p></aside>
 </section>
 
 <section class="slide" id="contrast" data-lo="LO4">
@@ -155,7 +167,7 @@
 </section>
 
 <section class="slide" id="bidi-basics" data-lo="LO5">
-  <div class="kicker">النص ثنائي الاتجاه</div>
+  <div class="kicker">النص ثنائي الاتجاه (bidirectional text)</div>
   <h2>المتصفح يرتب النص المختلط بخوارزمية؛ والنتيجة تفاجئ حيث تلتقي الاتجاهات</h2>
   <div class="cols cols-2">
     <ul class="bullets">
@@ -183,7 +195,7 @@
 </section>
 
 <section class="slide" id="mirroring" data-lo="LO5">
-  <div class="kicker">التخطيط المعكوس</div>
+  <div class="kicker">التخطيط المعكوس (mirrored layout)</div>
   <h2>ما يدل على اتجاه يُعكس، وما لا يدل لا يُعكس</h2>
   <div class="cols cols-2">
     <div class="card c-teal"><h4>يُعكس</h4><ul class="small mb0"><li>أسهم الرجوع والتقدم</li><li>ترتيب الخطوات</li><li>شريط التقدم</li></ul></div>
@@ -216,10 +228,10 @@
   <div class="kicker">نقطة تحقق</div>
   <h2>ما الإصلاح؟</h2>
   <div class="quiz" data-type="single" data-lo="LO5">
-    <p class="lead">في بوابة المقاولين، مقاول يكتب «Is the permit ready?» فتظهر علامة الاستفهام في أول السطر من جهة اليسار. ما الإصلاح؟</p>
+    <p class="lead">في بوابة المقاولين، مقاول يكتب «<bdi lang="en">Is the permit ready?</bdi>» فتظهر علامة الاستفهام في أول السطر من جهة اليسار. ما الإصلاح؟</p>
     <div class="opts">
       <div class="opt" data-ok><code>dir="auto"</code> على فقاعة رسالة المستخدم</div>
-      <div class="opt" data-why="يعالج رسالة واحدة: الفقاعة نفسها ستعرض الرسائل العربية بالاتجاه الخطأ">جعل الفقاعة <code>dir="ltr"</code> دائمًا لكل الرسائل</div>
+      <div class="opt" data-why="يعالج رسالة واحدة: الفقاعة نفسها ستعرض الرسائل العربية بالاتجاه الخطأ">جعل كل الفقاعات <code>dir="ltr"</code></div>
       <div class="opt" data-why="يخلط اللغة بالاتجاه: lang يغير النطق ولا يغير موضع العلامة">إضافة <code>lang="en"</code> على الصفحة كلها</div>
       <div class="opt" data-why="يعالج بالرموز الخفية ما يعالجه الترميز، ويُدخلها في نص كتبه المستخدم">إضافة رمز تحكم خفي بعد كل رسالة</div>
     </div>
@@ -277,7 +289,7 @@
 
 <section class="slide" id="think-aloud" data-lo="LO6">
   <div class="kicker">الميسّر</div>
-  <h2>التفكير بصوت عالٍ، وميسّر لا يساعد</h2>
+  <h2>التفكير بصوت عالٍ (think-aloud)، وميسّر لا يساعد</h2>
   <div class="cols cols-2">
     <div class="card c-teal"><h4>يقول</h4><ul class="small mb0"><li>«ماذا تتوقع أن يحدث؟»</li><li>«افعل ما تفعله لو كنت وحدك»</li><li>«ما الذي يدور في ذهنك الآن؟»</li></ul></div>
     <div class="card c-coral"><h4>لا يقول</h4><ul class="small mb0"><li>«جرّب الزر في الأسفل»</li><li>«أحسنت» أو «لا، ليس هكذا»</li><li>«هذا الجزء لم ننتهِ منه»</li></ul></div>
@@ -286,7 +298,7 @@
 </section>
 
 <section class="slide" id="seeded-errors" data-lo="LO6">
-  <div class="kicker">الأخطاء المزروعة</div>
+  <div class="kicker">الأخطاء المزروعة (seeded errors)</div>
   <h2>لتقيس الاعتماد المفرط، ازرع خطأً تعرفه، وعرّف القبول قبل الجلسة</h2>
   <div class="flow">
     <div class="step c-teal"><b>ازرع</b>خطأ معقولًا يمكن كشفه</div>
@@ -356,7 +368,7 @@
     <tr><th>المقياس</th><th>البسط</th><th>المقام</th></tr>
     <tr><td>نجاح المهام</td><td>المحاولات الناجحة</td><td>كل المحاولات</td></tr>
     <tr><td>الاعتماد المفرط</td><td>الأخطاء المزروعة المقبولة</td><td>المحاولات التي فيها خطأ مزروع فقط</td></tr>
-    <tr><td>زمن التعافي</td><td>الوسيط بالثواني</td><td>من تعافى؛ ويُذكر عدد من لم يتعافَ</td></tr>
+    <tr><td>زمن التعافي (recovery time)</td><td>الوسيط بالثواني</td><td>من تعافى؛ ويُذكر عدد من لم يتعافَ</td></tr>
   </table>
   <div class="callout warn mt"><b>الوسيط لا المتوسط:</b> مشارك واحد احتاج دقيقتين يرفع المتوسط ولا يحرك الوسيط.</div>
   <aside class="notes"><p>الخطأ المعتاد في المختبر: قسمة الأخطاء المقبولة على كل المحاولات. والثاني: حذف من لم يتعافَ من الحساب دون ذكره؛ هو أهم رقم في المقياس.</p></aside>
@@ -421,16 +433,6 @@
   <aside class="notes"><p>35 دقيقة. الخطأ المعتاد في الخطوة 3: المقام. ذكّر بأن الخانة الفارغة في <code>accepted_error</code> مهمة بلا خطأ مزروع. في الخطوة 5 ارفض التعديل الذي لا دليل له. المفتاح في صفحة المختبر.</p></aside>
 </section>
 
-<section class="slide" id="debrief-3-4" data-lo="LO6">
-  <div class="kicker">ما أظهره المختبر 3.4</div>
-  <h2>نصف المحاولات نجحت، ونصف الأخطاء المزروعة قُبلت</h2>
-  <div class="cols cols-3">
-    <div class="stat"><div class="big">11/20</div><div class="lbl">نجاح المهام (55%)؛ فترة ويلسون 34% إلى 74%</div></div>
-    <div class="stat"><div class="big">8/15</div><div class="lbl">أخطاء مزروعة قُبلت (53%)</div></div>
-    <div class="stat"><div class="big">46.5 ث</div><div class="lbl">وسيط التعافي في الإلغاء والتراجع؛ تعافى 4 من 5</div></div>
-  </div>
-  <aside class="notes"><p>خمس دقائق في آخر اليوم. أضعف المهام: آخر يوم للسداد والحجز (اثنان من خمسة لكل منهما). التعديلات المرجعية في صفحة المختبر. الأرقام من <code>check.py 3.4</code>.</p></aside>
-</section>
 
 <section class="slide" id="wrap-up">
   <div class="kicker">خلاصة اليوم 3</div>
