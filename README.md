@@ -5,7 +5,7 @@ Human-AI Interaction and Experience Design
 
 مسار التنفيذيين والقادة · أكاديمية سدايا · LDS-PRD-203 · المستوى 200
 
-REPLACE: سطر واحد تحت العنوان: ما يستطيع المشارك فعله بعد المقرر
+تختار نمط التفاعل بحسب قابلية التراجع، وتربط كل إشارة ثقة بدليل مقيس، وتصمم التأكيد والتراجع والتحويل إلى موظف، ثم تختبر الإتاحة والعربية مع الناس
 
 يصمم المشاركون طريقة عمل الناس مع مساعد ثنائي اللغة ووكيل لحجز المواعيد لدى جهة افتراضية لخدمات المرافق. فيدققون أنماط التفاعل، ويضبطون التوقعات وفق القدرات المقيسة، ويعرضون المصادر وعدم اليقين، ويضيفون التأكيد والتراجع لإجراءات الوكيل، ويصممون الإحالة إلى موظف بشري، ويتحققون من إمكانية الوصول ومن النص العربي المكتوب من اليمين إلى اليسار، وينتهون بنموذج أولي يختبرونه مع المستخدمين. أما بناء الواجهة الأمامية فيغطيه المقرر DEV-SWE-203.
 
@@ -30,10 +30,10 @@ REPLACE: سطر واحد تحت العنوان: ما يستطيع المشارك
 
 | الوحدة | العنوان | الجلسات | الشرائح |
 |---|---|---|---|
-| اليوم 1 | REPLACE: موضوع هذه الوحدة في كلمات قليلة | REPLACE: عنوان الجلسة 1; REPLACE: عنوان الجلسة 2; REPLACE: عنوان الجلسة 3; REPLACE: عنوان الجلسة 4 | [`slides/day1.html`](slides/day1.html) |
-| اليوم 2 | REPLACE: موضوع هذه الوحدة في كلمات قليلة | REPLACE: عنوان الجلسة 1; REPLACE: عنوان الجلسة 2; REPLACE: عنوان الجلسة 3; REPLACE: عنوان الجلسة 4 | [`slides/day2.html`](slides/day2.html) |
-| اليوم 3 | REPLACE: موضوع هذه الوحدة في كلمات قليلة | REPLACE: عنوان الجلسة 1; REPLACE: عنوان الجلسة 2; REPLACE: عنوان الجلسة 3; REPLACE: عنوان الجلسة 4 | [`slides/day3.html`](slides/day3.html) |
-| المشروع الختامي | عروض المشروع الختامي |  | [`slides/capstone.html`](slides/capstone.html) |
+| اليوم 1 | الأنماط والثقة المعايَرة | خمسة أنماط للمساعدات والوكلاء; خطر الثقة في كل نمط; القدرة المقيسة لا الموعودة; التعريف الأولي والمصادر وإشارات عدم اليقين | [`slides/day1.html`](slides/day1.html) |
+| اليوم 2 | الإفصاح والتعافي والتحويل | الإفصاح والذاكرة والموافقة; الرد الخاطئ والرفض والبطء; التأكيد والمعاينة والتراجع بحسب قابلية التراجع; التحويل إلى موظف مع السياق | [`slides/day2.html`](slides/day2.html) |
+| اليوم 3 | الإتاحة والاتجاه والاختبار مع الناس | الإتاحة في واجهة تبث ردودها; العربية والنص ثنائي الاتجاه; إدارة جلسة اختبار مع الناس; من خمس جلسات إلى ثلاثة تعديلات | [`slides/day3.html`](slides/day3.html) |
+| المشروع الختامي | نموذج مختبَر ونقد على مسار التعافي |  | [`slides/capstone.html`](slides/capstone.html) |
 <!-- /academy:units -->
 
 ## دراسة الحالة
@@ -47,18 +47,18 @@ REPLACE: سطر واحد تحت العنوان: ما يستطيع المشارك
 
 | | الجلسة | المختبر | الملف |
 |---|---|---|---|
-| 1.1 | اليوم 1 · الجلسة 1 | REPLACE: ما يبنيه المشاركون في المختبر 1.1 | [`D1_1.html`](labs/D1_1.html) |
-| 1.2 | اليوم 1 · الجلسة 2 | REPLACE: ما يبنيه المشاركون في المختبر 1.2 | [`D1_2.html`](labs/D1_2.html) |
-| 1.3 | اليوم 1 · الجلسة 3 | REPLACE: ما يبنيه المشاركون في المختبر 1.3 | [`D1_3.html`](labs/D1_3.html) |
-| 1.4 | اليوم 1 · الجلسة 4 | REPLACE: ما يبنيه المشاركون في المختبر 1.4 | [`D1_4.html`](labs/D1_4.html) |
-| 2.1 | اليوم 2 · الجلسة 1 | REPLACE: ما يبنيه المشاركون في المختبر 2.1 | [`D2_1.html`](labs/D2_1.html) |
-| 2.2 | اليوم 2 · الجلسة 2 | REPLACE: ما يبنيه المشاركون في المختبر 2.2 | [`D2_2.html`](labs/D2_2.html) |
-| 2.3 | اليوم 2 · الجلسة 3 | REPLACE: ما يبنيه المشاركون في المختبر 2.3 | [`D2_3.html`](labs/D2_3.html) |
-| 2.4 | اليوم 2 · الجلسة 4 | REPLACE: ما يبنيه المشاركون في المختبر 2.4 | [`D2_4.html`](labs/D2_4.html) |
-| 3.1 | اليوم 3 · الجلسة 1 | REPLACE: ما يبنيه المشاركون في المختبر 3.1 | [`D3_1.html`](labs/D3_1.html) |
-| 3.2 | اليوم 3 · الجلسة 2 | REPLACE: ما يبنيه المشاركون في المختبر 3.2 | [`D3_2.html`](labs/D3_2.html) |
-| 3.3 | اليوم 3 · الجلسة 3 | REPLACE: ما يبنيه المشاركون في المختبر 3.3 | [`D3_3.html`](labs/D3_3.html) |
-| 3.4 | اليوم 3 · الجلسة 4 | REPLACE: ما يبنيه المشاركون في المختبر 3.4 | [`D3_4.html`](labs/D3_4.html) |
+| 1.1 | اليوم 1 · الجلسة 1 | تدقيق المنتجات الستة: النمط والاستقلالية والتراجع | [`D1_1_pattern_audit.html`](labs/D1_1_pattern_audit.html) |
+| 1.2 | اليوم 1 · الجلسة 2 | جدول الأنماط المشروح: الخطر والإجراء | [`D1_2_risk_mitigation.html`](labs/D1_2_risk_mitigation.html) |
+| 1.3 | اليوم 1 · الجلسة 3 | بيان القدرة من 240 نتيجة تقييم | [`D1_3_capability.html`](labs/D1_3_capability.html) |
+| 1.4 | اليوم 1 · الجلسة 4 | إشارات الثقة في النموذج الأولي | [`D1_4_trust_cues.html`](labs/D1_4_trust_cues.html) |
+| 2.1 | اليوم 2 · الجلسة 1 | مراجعة الإفصاح والذاكرة والموافقة | [`D2_1_disclosure.html`](labs/D2_1_disclosure.html) |
+| 2.2 | اليوم 2 · الجلسة 2 | حالات الإخفاق الاثنتا عشرة | [`D2_2_failure_states.html`](labs/D2_2_failure_states.html) |
+| 2.3 | اليوم 2 · الجلسة 3 | التأكيد والتراجع لستة إجراءات | [`D2_3_confirm_undo.html`](labs/D2_3_confirm_undo.html) |
+| 2.4 | اليوم 2 · الجلسة 4 | مسارات التحويل وجدول التغطية | [`D2_4_handoff.html`](labs/D2_4_handoff.html) |
+| 3.1 | اليوم 3 · الجلسة 1 | اختبار الإتاحة للنموذج الأولي | [`D3_1_accessibility.html`](labs/D3_1_accessibility.html) |
+| 3.2 | اليوم 3 · الجلسة 2 | سجل عيوب الاتجاه من عشرين سيناريو | [`D3_2_bidi.html`](labs/D3_2_bidi.html) |
+| 3.3 | اليوم 3 · الجلسة 3 | جلسة اختبار يديرها ميسّر | [`D3_3_moderate.html`](labs/D3_3_moderate.html) |
+| 3.4 | اليوم 3 · الجلسة 4 | تقرير الاختبار وثلاثة تعديلات | [`D3_4_test_report.html`](labs/D3_4_test_report.html) |
 <!-- /academy:labs -->
 
 ## المشروع الختامي
@@ -77,16 +77,40 @@ REPLACE: سطر واحد تحت العنوان: ما يستطيع المشارك
 
 كل سطر قدرة، والأمثلة قابلة للتبديل.
 
-- **بناء النماذج الأولية التفاعلية:** Penpot, أي أداة تصميم تدعم النماذج الأولية التفاعلية, نموذج أولي بلغة HTML
+- **بناء النماذج الأولية التفاعلية:** Penpot, أي أداة تصميم تدعم النماذج الأولية التفاعلية, نموذج أولي بلغة HTML (المرفق بالمقرر)
 - **فحص إمكانية الوصول:** axe-core, WAVE
 - **قارئات الشاشة:** NVDA, VoiceOver, TalkBack
 - **نموذج لغوي لتوليد استجابات واقعية:** نموذج مستضاف مفتوح الأوزان, أي واجهة برمجة تطبيقات (API) تجارية
+- **جدول بيانات للحساب:** LibreOffice Calc, Microsoft Excel, Google Sheets
 <!-- /academy:tools -->
 
 <!-- academy:sources -->
 ## المصادر
 
-- REPLACE: كل مصدر يستشهد به المقرر مع عنوانه، في course.json ضمن "sources"؛ هذه القائمة تُكتب من هناك
+### المرجعيات الوطنية
+
+- [مبادئ أخلاقيات الذكاء الاصطناعي (سدايا)](https://sdaia.gov.sa/ar/SDAIA/about/Documents/ai-principles.pdf)
+- [AI Ethics Principles (SDAIA, English edition)](https://sdaia.gov.sa/en/SDAIA/about/Documents/ai-principles.pdf)
+- [المبادئ التوجيهية للذكاء الاصطناعي التوليدي للجهات الحكومية (سدايا)](https://sdaia.gov.sa/ar/SDAIA/about/Files/GenAIGuidelinesForGovernmentARCompressed.pdf)
+- [Generative AI Guidelines for Government (SDAIA, English edition)](https://sdaia.gov.sa/en/SDAIA/about/Files/GenAIGuidelinesForGovernmentENCompressed.pdf)
+- [نظام حماية البيانات الشخصية](https://sdaia.gov.sa/ar/SDAIA/about/Documents/PersonalDataProtectionLawAr.pdf)
+- [Personal Data Protection Law (SDAIA, English edition)](https://sdaia.gov.sa/en/SDAIA/about/Documents/PersonalDataProtectionLaw.pdf)
+
+### الإتاحة والاتجاه
+
+- [W3C: Web Content Accessibility Guidelines (WCAG) 2.2, W3C Recommendation, 12 December 2024](https://www.w3.org/TR/WCAG22/)
+- [MDN: ARIA live regions](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions)
+- [W3C Internationalization: Inline markup and bidirectional text in HTML](https://www.w3.org/International/articles/inline-bidi-markup/)
+- [Deque: axe-core (MPL-2.0)](https://github.com/dequelabs/axe-core)
+- [WebAIM: WAVE browser extensions](https://wave.webaim.org/extension/)
+- [NV Access: NVDA download](https://www.nvaccess.org/download/)
+
+### التفاعل بين الإنسان والذكاء الاصطناعي واختبار قابلية الاستخدام
+
+- [Amershi et al.: Guidelines for Human-AI Interaction (CHI 2019)](https://www.microsoft.com/en-us/research/publication/guidelines-for-human-ai-interaction/)
+- [Passi and Vorvoreanu: Overreliance on AI, Literature Review (Microsoft, MSR-TR-2022-12)](https://www.microsoft.com/en-us/research/publication/overreliance-on-ai-literature-review/)
+- [Nielsen Norman Group: Why You Only Need to Test with 5 Users (2000)](https://www.nngroup.com/articles/why-you-only-need-to-test-with-5-users/)
+- [Penpot: open-source design platform](https://penpot.app/)
 <!-- /academy:sources -->
 
 ### المرجعيات الوطنية

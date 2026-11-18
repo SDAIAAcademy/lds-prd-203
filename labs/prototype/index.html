@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sayyib Assistant prototype</title>
+<style>
+  :root { --ink: #1d2733; --muted: #a3a3a3; --brand: #0b6e8a; --paper: #f4f7f9; --line: #dde3e8; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", sans-serif; color: var(--ink); background: var(--paper); }
+  button, input, select { font: inherit; }
+  button:focus, input:focus, select:focus, .slot:focus { outline: none; }
+  .app { max-width: 460px; margin: 0 auto; min-height: 100vh; background: #fff; display: flex; flex-direction: column; }
+  header { background: var(--brand); color: #fff; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
+  header .avatar { width: 36px; height: 36px; border-radius: 50%; background: #f2c9a8; }
+  header h1 { font-size: 17px; margin: 0; flex: 1; }
+  #menu-button { background: none; border: 0; color: #fff; font-size: 20px; cursor: pointer; }
+  #menu { position: absolute; margin-top: 44px; inset-inline-end: 16px; background: #fff; border: 1px solid var(--line); padding: 8px; }
+  #menu button { display: block; width: 100%; background: none; border: 0; padding: 8px; text-align: start; }
+  nav { display: flex; border-bottom: 1px solid var(--line); }
+  nav button { flex: 1; padding: 10px; background: none; border: 0; border-bottom: 3px solid transparent; cursor: pointer; }
+  nav button[aria-selected="true"] { border-bottom-color: var(--brand); font-weight: 600; }
+  main { flex: 1; padding: 12px 16px; }
+  .msg { max-width: 85%; margin: 8px 0; padding: 8px 12px; border-radius: 12px; }
+  .msg p { margin: 0 0 4px; }
+  .msg.user { background: #e3f1f5; margin-inline-start: auto; }
+  .msg.ai { background: #f1f1f1; }
+  .meta { font-size: 12px; color: var(--muted); }
+  .meta.caution { color: #8a5a00; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0; }
+  .chip { border: 1px solid var(--line); background: #fff; border-radius: 16px; padding: 4px 10px; cursor: pointer; font-size: 13px; }
+  .composer { display: flex; gap: 8px; padding: 10px 16px; border-top: 1px solid var(--line); }
+  .composer input { flex: 1; padding: 10px; border: 1px solid var(--line); border-radius: 8px; }
+  #send { width: 40px; height: 40px; border-radius: 50%; background: var(--brand); cursor: pointer; display: grid; place-items: center; color: #fff; }
+  .inline-action { margin-top: 6px; background: var(--brand); color: #fff; border: 0; border-radius: 6px; padding: 6px 10px; cursor: pointer; }
+  .stepper { direction: ltr; display: flex; gap: 6px; font-size: 13px; color: #555; margin-bottom: 10px; }
+  .day-row { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
+  .day-name { flex: 1; font-size: 14px; }
+  .slot { width: 20px; height: 20px; padding: 0; font-size: 10px; border: 2px solid var(--line); background: #fff; cursor: pointer; }
+  .slot.chosen { background: var(--brand); color: #fff; border-color: var(--brand); }
+  .slot.slot-taken { border-color: #d33; }
+  .date-line { color: var(--muted); font-size: 12px; }
+  #confirm-dialog { display: none; position: fixed; inset: 0; background: rgba(0, 0, 0, .4); }
+  #confirm-dialog.open { display: grid; place-items: center; }
+  #confirm-dialog .box { background: #fff; padding: 16px; border-radius: 10px; width: 90%; max-width: 380px; }
+  .primary { background: var(--brand); color: #fff; border: 0; border-radius: 6px; padding: 8px 14px; cursor: pointer; }
+  .secondary { background: #fff; border: 1px solid var(--line); border-radius: 6px; padding: 8px 14px; cursor: pointer; }
+  #undo-cancel { font-size: 11px; background: none; border: 0; color: var(--brand); text-decoration: underline; cursor: pointer; }
+  #onboarding { position: fixed; inset: 0; background: #fff; display: grid; place-items: center; padding: 24px; text-align: center; }
+  #onboarding[hidden] { display: none; }
+  #test-badge { background: #8a5a00; color: #fff; font-size: 11px; padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body dir="rtl">
+<div class="app">
+  <header>
+    <div class="avatar"></div>
+    <h1 id="assistant-name">مساعد صيّب</h1>
+    <span id="test-badge" hidden>وضع الاختبار</span>
+    <button id="menu-button" type="button" title="القائمة">⚙</button>
+  </header>
+  <div id="menu" hidden>
+    <button type="button">الإعدادات</button>
+    <button type="button">اللغة</button>
+    <button id="menu-person" type="button">تحدث إلى موظف</button>
+  </div>
+  <nav role="tablist" aria-label="أقسام التطبيق">
+    <button id="tab-chat" type="button" role="tab">المحادثة</button>
+    <button id="tab-bill" type="button" role="tab">فاتورتي</button>
+    <button id="tab-visits" type="button" role="tab">مواعيدي</button>
+  </nav>
+
+  <main>
+    <section id="view-chat">
+      <button id="person-always" class="secondary" type="button" hidden>تحدث إلى موظف</button>
+      <div class="chips">
+        <button class="chip" type="button">آخر يوم للسداد</button>
+        <button class="chip" type="button">متى تعود المياه؟</button>
+        <button class="chip" type="button">تعرفة الشريحة الثانية</button>
+        <button class="chip" type="button">أريد نقل الخدمة</button>
+        <button class="chip" type="button">خطة سداد</button>
+        <button class="chip" type="button">احجز زيارة فني</button>
+      </div>
+      <div id="reply-stream"></div>
+    </section>
+
+    <section id="view-bill" hidden>
+      <h2>فاتورة نوفمبر 2026</h2>
+      <p>رقم الحساب: 3087-11</p>
+      <p>المبلغ: <b id="bill-amount"></b></p>
+      <p>آخر يوم للسداد: <b id="bill-due"></b></p>
+      <p class="date-line">صدرت في 1 نوفمبر 2026 · Billing period: October 2026</p>
+    </section>
+
+    <section id="view-visits" hidden>
+      <h2>حجز زيارة فني</h2>
+      <div class="stepper"><span>الخدمة</span><span>→</span><span>التاريخ</span><span>→</span><span>التأكيد</span></div>
+      <label for="visit-type">نوع الزيارة</label>
+      <select id="visit-type">
+        <option>فحص العداد</option>
+        <option>كشف تسرب</option>
+        <option>جودة المياه</option>
+      </select>
+      <p class="date-line">ص: الفترة الصباحية · م: الفترة المسائية</p>
+      <div id="slots"></div>
+      <p id="slot-error"></p>
+      <button id="book-next" class="primary" type="button">متابعة</button>
+      <div id="booking-status" hidden>
+        <p id="booking-head"></p>
+        <p id="booking-line"></p>
+        <button id="undo-book" class="secondary" type="button" hidden>تراجع عن الحجز</button>
+        <button id="cancel-visit" class="secondary" type="button">إلغاء الزيارة</button>
+        <button id="undo-cancel" type="button" hidden>تراجع عن الإلغاء</button>
+      </div>
+    </section>
+  </main>
+
+  <div class="composer">
+    <input id="msg" type="text" placeholder="اكتب سؤالك هنا">
+    <div id="send">➤</div>
+  </div>
+</div>
+
+<div id="confirm-dialog">
+  <div class="box">
+    <h2>تأكيد الحجز</h2>
+    <ul id="confirm-summary"></ul>
+    <button id="confirm-yes" class="primary" type="button">تأكيد</button>
+    <button id="confirm-no" class="secondary" type="button">رجوع</button>
+  </div>
+</div>
+
+<div id="onboarding">
+  <div>
+    <p id="onboarding-text"></p>
+    <button id="onboarding-next" class="primary" type="button">التالي</button>
+  </div>
+</div>
+
+<script src="content.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
