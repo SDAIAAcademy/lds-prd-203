@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>منصة اختبار الاتجاه</title>
+<style>
+  body { margin: 0; font-family: "Segoe UI", Tahoma, "Noto Naskh Arabic", sans-serif; background: #f4f7f9; color: #1d2733; }
+  main { max-width: 760px; margin: 0 auto; padding: 16px; }
+  .row { display: grid; grid-template-columns: 56px 1fr; gap: 10px; align-items: start; background: #fff;
+         border: 1px solid #dde3e8; border-radius: 8px; padding: 10px; margin: 8px 0; }
+  .id { font-weight: 700; color: #0b6e8a; }
+  .kind { font-size: 12px; color: #5f6b76; margin: 0 0 6px; }
+  .msg { max-width: 90%; padding: 8px 12px; border-radius: 12px; margin: 0 0 6px; }
+  .user { background: #e3f1f5; }
+  .ai { background: #f1f1f1; }
+  .h { font-size: 22px; margin: 0; }
+  .tight { font-size: 26px; line-height: 0.7; height: 0.7em; overflow: hidden; margin: 0; }
+  .stepper { display: flex; gap: 6px; }
+  .stepper.ltr { direction: ltr; }
+</style>
+</head>
+<body>
+<main>
+<h1>منصة اختبار الاتجاه</h1>
+<p>كل صف سيناريو من الملف bidi_scripts.csv كما تعرضه واجهة مساعد صيّب الحالية. قارن ما تراه بالنص في الملف، وسجّل كل عيب.</p>
+<div class="row"><div class="id">T01</div><div><p class="kind">رقم هاتف دولي</p><p class="msg ai">للتواصل: +966 55 123 4567</p></div></div>
+<div class="row"><div class="id">T02</div><div><p class="kind">رصيد دائن بإشارة سالبة</p><p class="msg ai">رصيدك: -120.50 ريال</p></div></div>
+<div class="row"><div class="id">T03</div><div><p class="kind">رقم حساب</p><p class="msg ai">رقم حسابك SY-2048-117</p></div></div>
+<div class="row"><div class="id">T04</div><div><p class="kind">تاريخ ميلادي بعد كلمة عربية</p><p class="msg ai">موعد الزيارة 2026-11-24 (الفترة الصباحية)</p></div></div>
+<div class="row"><div class="id">T05</div><div><p class="kind">رقم مبنى مختلط</p><p class="msg ai">العنوان: حي الندى، مبنى 12-B</p></div></div>
+<div class="row"><div class="id">T06</div><div><p class="kind">رسالة بالإنجليزية</p><p class="msg user" dir="rtl">Can I move it to Thursday?</p></div></div>
+<div class="row"><div class="id">T07</div><div><p class="kind">عربيزي</p><p class="msg user" dir="rtl">abgha a7jz maw3ed!</p></div></div>
+<div class="row"><div class="id">T08</div><div><p class="kind">رد المساعد على رسالة مختلطة</p><p class="msg user" dir="rtl">ابغى اغير موعدي to Thursday</p><p class="msg ai">Done. Pick a Thursday slot from My visits.</p></div></div>
+<div class="row"><div class="id">T09</div><div><p class="kind">رقم عشري</p><p class="msg ai">متوسط استهلاكك اليومي 0.42 متر مكعب</p></div></div>
+<div class="row"><div class="id">T10</div><div><p class="kind">مبلغ وعملة بالإنجليزية</p><p class="msg ai">Amount due: 245.50 SAR</p></div></div>
+<div class="row"><div class="id">T11</div><div><p class="kind">عنوان قصير</p><p class="h">مواعيدي</p></div></div>
+<div class="row"><div class="id">T12</div><div><p class="kind">سهم الرجوع</p><p class="h">← رجوع</p></div></div>
+<div class="row"><div class="id">T13</div><div><p class="kind">شريط خطوات الحجز</p><div class="stepper ltr"><span>الخدمة</span><span>→</span><span>التاريخ</span><span>→</span><span>التأكيد</span></div></div></div>
+<div class="row"><div class="id">T14</div><div><p class="kind">رقم عداد بشرطة</p><p class="msg ai">رقم العداد 00417-88213</p></div></div>
+<div class="row"><div class="id">T15</div><div><p class="kind">بريد إلكتروني في جملة عربية</p><p class="msg ai">أرسلنا الإيصال إلى huda.k@example.com.</p></div></div>
+<div class="row"><div class="id">T16</div><div><p class="kind">تاريخ بين قوسين</p><p class="msg ai">آخر قراءة للعداد (2026-11-22)</p></div></div>
+<div class="row"><div class="id">T17</div><div><p class="kind">كود مختلط في رسالة</p><p class="msg user" dir="rtl">الكود: 4471 أرسله لي</p></div></div>
+<div class="row"><div class="id">T18</div><div><p class="kind">اسم لاتيني لفني</p><p class="msg ai">الفني المكلّف: Joseph D.</p></div></div>
+<div class="row"><div class="id">T19</div><div><p class="kind">رسالة بلهجة خليجية</p><p class="msg user" dir="rtl">وش صار على طلبي؟</p></div></div>
+<div class="row"><div class="id">T20</div><div><p class="kind">تشكيل في عنوان</p><p class="tight">تَحقَّقْ من بياناتِك</p></div></div>
+</main>
+</body>
+</html>

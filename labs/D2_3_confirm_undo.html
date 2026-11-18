@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.3 · التأكيد والتراجع لستة إجراءات · تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_3_confirm_undo.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-3">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.3</span>
+<h1>التأكيد والتراجع لستة إجراءات</h1>
+<p>ترسم أولًا دون أي أداة ذكاء اصطناعي مسار كل إجراء من إجراءات الوكيل الستة، ثم تصنف قابلية التراجع، وتختار مستوى التأكيد، وتكتب نصه ووسيلة التراجع، وتضبط مهلة التراجع في النموذج الأولي</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 2</span><span>الجلسة 3: التأكيد والمعاينة والتراجع بحسب قابلية التراجع</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.3">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>مسار مرسوم بيدك لكل إجراء من إجراءات وكيل المواعيد الستة.</li>
+      <li>جدول يدرّج التأكيد والتراجع: قابلية التراجع، ومستوى التأكيد، ونص التأكيد، ووسيلة التراجع، وقاعدة التحويل إن وُجدت.</li>
+      <li>مهلة تراجع بعد الحجز تعمل في نموذجك الأولي.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="files/agent_actions.csv" target="_blank"><b>agent_actions.csv</b><span>الإجراءات الستة وما يحدث بعد تنفيذها</span></a>
+    <a href="files/confirmation_levels.txt" target="_blank"><b>confirmation_levels.txt</b><span>مستويات التأكيد م0 إلى م3 (أداة المقرر)</span></a>
+    <a href="files/handoff_rules.txt" target="_blank"><b>handoff_rules.txt</b><span>قواعد التحويل في صيّب</span></a>
+    <a href="files/action_grading_template.csv" target="_blank"><b>action_grading_template.csv</b><span>الجدول الذي تملؤه</span></a>
+    <a href="prototype/content.js" target="_blank"><b>prototype/content.js</b><span>نسختك من المختبر 2.1</span></a>
+    <a href="solutions/prototype/content-after-1.4.js" target="_blank"><b>content-after-1.4.js</b><span>نقطة البداية البديلة لمن لم يكمل 2.1: تُحفظ باسم content.js، والخطوة 5 تغيّر فيها undoSeconds وحدها</span></a>
+  </div>
+  <p class="small">ورق وقلم. سياسة الذكاء الاصطناعي: <b>دون أي أداة ذكاء اصطناعي في الخطوتين 1 و2</b> (الرسم الأول للمسارات)؛ مساعد مرشد بعدهما. الملفات اصطناعية ومصنفة «عام».</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · اقرأ الإجراءات الستة ومستويات التأكيد <span class="min">5 د</span></h3>
+    <p>العمودان الأخيران في ملف الإجراءات («بعد التنفيذ» و«من يتأثر غير الساكن») هما الدليل.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · ارسم على الورق مسار كل إجراء، دون أداة ذكاء اصطناعي <span class="min">8 د</span></h3>
+    <p>لكل إجراء: طلب الساكن، ثم ما يعرضه الوكيل، ثم التأكيد، ثم التنفيذ، ثم ما يراه بعده. صوّر الورقة: الرسم الأول جزء من سجل التصميم.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · صنّف قابلية التراجع واختر مستوى التأكيد لكل إجراء <span class="min">8 د</span></h3>
+    <p>ق1 أو ق2 أو ق3، ثم م0 إلى م3. الإجراء الذي يمس غير الساكن يرتفع مستواه. وفي <code>handoff_rule</code> اكتب رقم القاعدة إن كانت قاعدة تحويل تحكم الإجراء.</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · اكتب نص التأكيد ووسيلة التراجع لكل إجراء <span class="min">10 د</span></h3>
+    <p>نص التأكيد يذكر ما سيحدث بالتاريخ والفترة بالكلمات، والتكلفة إن وُجدت، ومن يتأثر. ووسيلة التراجع تقول كيف ومتى، أو تقول صراحة إنه لا تراجع.</p>
+  </div>
+
+  <div class="step">
+    <h3>5 · اضبط مهلة التراجع بعد الحجز في content.js وجرّبها <span class="min">4 د</span></h3>
+    <p>القيمة <code>undoSeconds</code>. احجز زيارة في تبويب المواعيد، وتأكد أن زر التراجع يظهر ويعمل، ثم احفظ نسختك باسم <code>content-v3.js</code>.</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>صمم شاشة الموافقة لمشاركة سجل الاستهلاك (A6): ماذا يُرسل، ولمن، وكيف تُوقف المشاركة القادمة.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>أي إجراء لا ينفذه الوكيل أبدًا دون موظف، ولماذا؟</li>
+    <li>أي إجراء صنّفته ق2 مع أن الساكن يستطيع إعادته، ولماذا؟</li>
+    <li>هل يذكر نص التأكيد عندك التاريخ بالكلمات، والرسوم حين توجد؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب: مفتاح المختبر</summary>
+    <table class="t small">
+      <tr><th>الإجراء</th><th>التراجع</th><th>التأكيد</th><th>وسيلة التراجع المرجعية</th></tr>
+      <tr><td>A1 حجز زيارة</td><td>ق1</td><td>م1</td><td>إلغاء مجاني ظاهر في رسالة التأكيد حتى يوم قبل الزيارة</td></tr>
+      <tr><td>A2 تغيير موعد</td><td>ق2</td><td>م2</td><td>الفترة الأصلية تُحجز للساكن 15 دقيقة، وزر «أعد موعدي السابق»</td></tr>
+      <tr><td>A3 إلغاء زيارة</td><td>ق2</td><td>م2</td><td>التأكيد يذكر الرسوم إن وُجدت؛ وتراجع ما دامت الفترة شاغرة</td></tr>
+      <tr><td>A4 الاعتراض على قراءة</td><td>ق2</td><td>م1</td><td>سحب الاعتراض خلال 48 ساعة من صفحة الطلب</td></tr>
+      <tr><td>A5 إيقاف الإمداد</td><td>ق3</td><td>م3</td><td>لا تراجع بعد الإغلاق؛ يعتمد مكتب الجدولة ويُبلغ سكان المبنى (القاعدة H6)</td></tr>
+      <tr><td>A6 مشاركة السجل</td><td>ق3</td><td>م2</td><td>إيقاف المشاركة القادمة فقط؛ لا يقترح الوكيل المشاركة من تلقاء نفسه</td></tr>
+    </table>
+    <ul>
+      <li><b>خلاف متوقع:</b> A4 م1 مع أنها ق2: السحب ممكن 48 ساعة، والاعتراض يحمي الساكن (يجمّد الغرامة)، فلا داعي لعائق. A6 م2 لا م3: البيانات بيانات الساكن نفسه وهو صاحب القرار، لكن ما أُرسل لا يُسترد، فالتأكيد صريح في خطوة مستقلة.</li>
+      <li><b>نصوص التأكيد المرجعية وقاعدة التحويل:</b> في <code>labs/files/action_grading_reference.csv</code> (ملف البداية للمختبر 2.4)؛ القاعدة H6 تحكم A5 وحده.</li>
+      <li><b>النموذج الأولي:</b> <code>undoSeconds: 30</code> في <code>labs/solutions/prototype/content-after-2.3.js</code>. رسالة إلغاء الزيارة في النموذج تذكر رسوم 75 ريالًا حين يكون الموعد غدًا.</li>
+      <li><b>أخطاء شائعة:</b> م0 للحجز لأنه «سهل الإلغاء» (التأكيد يحمي من خطأ التاريخ الذي رأيناه في P4)؛ نص تأكيد يقول «هل أنت متأكد؟» دون الأثر.</li>
+      <li><b>فصل المهام:</b> فريق المنتج يقترح المستويات، وفيصل العسيري يعتمد ما يمس الجدولة الميدانية، ومكتب الجدولة (لا الوكيل ولا من صممه) يعتمد كل طلب م3.</li>
+      <li>التحقق: <code>uv run labs/solutions/check.py 2.3</code>.</li>
+    </ul>
+  </details>
+</article>
+<nav class="pager"><a href="D2_2_failure_states.html" rel="prev">→ المختبر السابق</a><a href="D2_4_handoff.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع cf6c42b</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T07:20:36Z","version":"2027.1.0","commit":"cf6c42b"},"course":{"id":"lds-prd-203","code":"LDS-PRD-203","title":"تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-prd-203/","repo":"SDAIAAcademy/lds-prd-203","home":"../index.html"},"lab":{"id":"2.3","title":"التأكيد والتراجع لستة إجراءات","summary":"ترسم أولًا دون أي أداة ذكاء اصطناعي مسار كل إجراء من إجراءات الوكيل الستة، ثم تصنف قابلية التراجع، وتختار مستوى التأكيد، وتكتب نصه ووسيلة التراجع، وتضبط مهلة التراجع في النموذج الأولي","minutes":35,"day":2,"unit":"اليوم 2","session":3,"deck":"../slides/day2.html#lab-2-3","prev":"D2_2_failure_states.html","next":"D2_4_handoff.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

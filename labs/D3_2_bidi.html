@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 3.2 · سجل عيوب الاتجاه من عشرين سيناريو · تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D3_2_bidi.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day3.html#lab-3-2">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 3.2</span>
+<h1>سجل عيوب الاتجاه من عشرين سيناريو</h1>
+<p>تقارن عشرين سيناريو ثنائي اللغة بما تعرضه منصة الاختبار، وتسجل كل عيب وسببه وإصلاحه، وتترك السيناريوهات السليمة سليمة</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 3</span><span>الجلسة 2: العربية والنص ثنائي الاتجاه</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="3.2">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>سجل عيوب الاتجاه: لكل سيناريو من العشرين هل فيه عيب، وسببه، وإصلاحه.</li>
+      <li>معرفة بالسيناريوهات التي تبدو خطرة وتظهر سليمة، فلا تُصلح ما ليس معطوبًا.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="prototype/bench.html" target="_blank"><b>prototype/bench.html</b><span>منصة الاختبار: السيناريوهات كما تعرضها الواجهة</span></a>
+    <a href="files/bidi_scripts.csv" target="_blank"><b>bidi_scripts.csv</b><span>عشرون سيناريو والنص الذي يجب أن يُقرأ</span></a>
+    <a href="files/bidi_log_template.csv" target="_blank"><b>bidi_log_template.csv</b><span>سجل العيوب</span></a>
+    <a href="prototype/index.html" target="_blank"><b>prototype/index.html</b><span>للخطوة الأخيرة</span></a>
+  </div>
+  <p class="small">افتح ملف CSV في محرر نصوص أو جدول بيانات يعرض العربية من اليمين. سياسة الذكاء الاصطناعي: مساعد مرشد؛ اسأله عن خوارزمية الاتجاه، لا عن سيناريوهاتك. الملفات اصطناعية، والبريد والأرقام فيها ليست لأحد.</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · افتح منصة الاختبار والملف bidi_scripts.csv جنبًا إلى جنب <span class="min">4 د</span></h3>
+    <p>العمود <code>text</code> هو ما يجب أن يقرأه الساكن. المنصة تعرضه كما تعرضه واجهة صيّب الحالية.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · قارن السيناريوهات العشرة الأولى بالنص المتوقع <span class="min">10 د</span></h3>
+    <p>اقرأ كل صف كما يقرؤه الساكن، من اليمين. اكتب في <code>defect</code> ما تراه مختلفًا، أو «لا عيب». ترتيب الأرقام وموضع علامات الترقيم واتجاه الأسهم كلها عيوب.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · قارن السيناريوهات العشرة الباقية <span class="min">10 د</span></h3>
+    <p>لا تتوقع عيبًا في كل صف: بعض السيناريوهات التي تبدو خطرة تظهر سليمة.</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · اكتب لكل عيب سببه وإصلاحه <span class="min">8 د</span></h3>
+    <p>السبب في سطر: اتجاه الحاوية، أو أرقام بعد حرف عربي، أو أيقونة لا تنعكس، أو ارتفاع السطر. الإصلاح بالعزل (<code>bdi</code> أو <code>span dir="ltr"</code>) والاتجاه التلقائي (<code>dir="auto"</code>) وخصائص CSS، لا بإضافة رموز تحكم خفية.</p>
+  </div>
+
+  <div class="step">
+    <h3>5 · جرّب سيناريو من عندك في محادثة النموذج الأولي <span class="min">3 د</span></h3>
+    <p>اكتب سؤالًا مختلطًا (عربي وإنجليزي وأرقام) وأرسله. هل ظهر كما كتبته؟</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>اكتب ثلاثة سيناريوهات جديدة لم ترد في الملف، واحد منها بالعربيزي.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>كم سيناريو فيه عيب، وكم سليم؟</li>
+    <li>اختر عيبًا وسيناريو سليمًا يبدوان متشابهين، واشرح ما الذي يفرّق بينهما.</li>
+    <li>أي عيب لا يُصلح بالترميز، بل بقرار في المحتوى؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب: مفتاح المختبر</summary>
+    <p class="small">ثلاثة عشر عيبًا وسبعة سيناريوهات سليمة. فُحص العرض في Chrome على Windows عند الإعداد بلقطات للمنصة قبل الإصلاح وبعده؛ قد يختلف متصفح آخر في سيناريو أو اثنين: افتح المنصة قبل الدفعة.</p>
+    <table class="t small">
+      <tr><th>السيناريو</th><th>العيب</th><th>الإصلاح المرجعي</th></tr>
+      <tr><td>T01 هاتف دولي</td><td>تنقلب مجموعات الأرقام ويقفز +</td><td><code>span dir="ltr"</code> حول الرقم</td></tr>
+      <tr><td>T02 رصيد سالب</td><td>تقفز الإشارة السالبة إلى يمين الرقم</td><td><code>span dir="ltr"</code> حول المبلغ</td></tr>
+      <tr><td>T04 · T14 · T16</td><td>ينقلب التاريخ أو رقم العداد بشرطة بعد حرف عربي</td><td><code>span dir="ltr"</code> حول القيمة</td></tr>
+      <tr><td>T05 مبنى 12-B</td><td>يظهر B-12</td><td><code>span dir="ltr"</code></td></tr>
+      <tr><td>T06 · T07 رسالة الساكن</td><td>علامة الاستفهام أو التعجب في أول السطر</td><td><code>dir="auto"</code> على فقاعة الساكن</td></tr>
+      <tr><td>T08 لغة الرد</td><td>يرد بالإنجليزية على رسالة أغلبها عربي</td><td>قرار محتوى: الرد بلغة الساكن الغالبة</td></tr>
+      <tr><td>T12 سهم الرجوع</td><td>يشير إلى اليسار</td><td>سهم يشير إلى اليمين في الواجهة العربية</td></tr>
+      <tr><td>T13 شريط الخطوات</td><td>الخطوة الأولى على اليسار</td><td>حذف <code>direction: ltr</code>، وأسهم ←</td></tr>
+      <tr><td>T18 اسم لاتيني</td><td>تنتقل النقطة بعد D</td><td><code>bdi</code> حول الاسم</td></tr>
+      <tr><td>T20 التشكيل</td><td>ارتفاع السطر يقص الحركات</td><td>ارتفاع سطر عادي ولا ارتفاع ثابت للعنوان</td></tr>
+    </table>
+    <ul>
+      <li><b>السليمة:</b> T03 (رقم الحساب يبدأ بحرف لاتيني)، T09 (عشري)، T10 (سطر إنجليزي كامل)، T11، T15 (النقطة بعد البريد في مكانها الصحيح في جملة عربية)، T17، T19. من «أصلح» سيناريو سليمًا يعرف الآن أن الاختبار قبل الإصلاح.</li>
+      <li><b>النسخة المصلحة:</b> <code>labs/solutions/prototype/bench.html</code>. وفي النموذج المصلح: <code>dir="auto"</code> على رسائل الساكن، وعزل القيم في ملخص الحجز، ورقم الحساب في الفاتورة.</li>
+      <li><b>ممارسة منشورة:</b> W3C Internationalization، Inline markup and bidirectional text in HTML: الاتجاه على أضيق عنصر يحيط بالنص، و<code>dir="auto"</code> أو <code>bdi</code> للنص الذي لا يُعرف اتجاهه، والترميز مقدم على رموز التحكم.</li>
+      <li><b>فصل المهام:</b> المطور يصلح، ولمى الجهني تعيد الاختبار على المنصة نفسها بمتصفحين.</li>
+      <li>التحقق: <code>uv run labs/solutions/check.py 3.2</code>.</li>
+    </ul>
+  </details>
+</article>
+<nav class="pager"><a href="D3_1_accessibility.html" rel="prev">→ المختبر السابق</a><a href="D3_3_moderate.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع cf6c42b</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T07:20:36Z","version":"2027.1.0","commit":"cf6c42b"},"course":{"id":"lds-prd-203","code":"LDS-PRD-203","title":"تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-prd-203/","repo":"SDAIAAcademy/lds-prd-203","home":"../index.html"},"lab":{"id":"3.2","title":"سجل عيوب الاتجاه من عشرين سيناريو","summary":"تقارن عشرين سيناريو ثنائي اللغة بما تعرضه منصة الاختبار، وتسجل كل عيب وسببه وإصلاحه، وتترك السيناريوهات السليمة سليمة","minutes":35,"day":3,"unit":"اليوم 3","session":2,"deck":"../slides/day3.html#lab-3-2","prev":"D3_1_accessibility.html","next":"D3_3_moderate.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

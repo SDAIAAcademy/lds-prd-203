@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 2.2 · حالات الإخفاق الاثنتا عشرة · تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D2_2_failure_states.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day2.html#lab-2-2">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 2.2</span>
+<h1>حالات الإخفاق الاثنتا عشرة</h1>
+<p>تقرأ اثني عشر إخفاقًا مسجلًا، وتصنف كلًا منها، وتكتب حالة الواجهة لكل نوع، وتحدد من يصلح السبب</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 2</span><span>الجلسة 2: الرد الخاطئ والرفض والبطء</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="2.2">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>تصنيف لاثني عشر إخفاقًا مسجلًا في خمسة أنواع.</li>
+      <li>حالة واجهة لكل نوع: ما يراه الساكن، وما يستطيع فعله، ومن يصلح السبب.</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="files/failure_log.txt" target="_blank"><b>failure_log.txt</b><span>اثنا عشر إخفاقًا وما حدث فعلًا</span></a>
+    <a href="files/failure_states_template.csv" target="_blank"><b>failure_states_template.csv</b><span>الجدول الذي تملؤه</span></a>
+  </div>
+  <p class="small">الأنواع الخمسة: خاطئ، ورفض مناسب، ورفض غير مناسب، وبطيء، وخارج النطاق. سياسة الذكاء الاصطناعي: مساعد مرشد؛ اطلب منه أن يقرأ حالاتك بصفته ساكنًا مستعجلًا، لا أن يكتبها. الملفات اصطناعية ومصنفة «عام».</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · اقرأ الإخفاقات الاثني عشر وما حدث فعلًا في كل منها <span class="min">7 د</span></h3>
+    <p>السطر الثالث في كل إخفاق («ما حدث فعلًا») هو الذي يحسم النوع، لا رد المساعد.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · صنّف كل إخفاق في أحد الأنواع الخمسة <span class="min">7 د</span></h3>
+    <p>اكتب النوع في <code>kind</code>. إذا اجتمع نوعان (رد بطيء وخاطئ معًا)، اختر النوع الذي يضر الساكن أكثر واذكر الآخر في الملاحظة.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · اكتب حالة الواجهة لكل نوع: النص والإجراء المتاح <span class="min">12 د</span></h3>
+    <p>في <code>what_the_user_sees</code> النص الذي يظهر، وفي <code>what_the_user_can_do</code> زر أو رابط واحد على الأقل. «حدث خطأ، حاول لاحقًا» ليست حالة واجهة.</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · حدد لكل إخفاق من يصلح سببه <span class="min">5 د</span></h3>
+    <p>في <code>who_fixes_the_cause</code>: فريق دليل المعرفة، أو فريق المساعد، أو فريق الأنظمة، أو لا أحد (السلوك سليم). الواجهة تخفف الضرر؛ السبب يُصلح في مكانه.</p>
+  </div>
+
+  <div class="step">
+    <h3>5 · راجع حالاتك مع زميل: هل يعرف المستخدم ما حدث وماذا يفعل؟ <span class="min">4 د</span></h3>
+    <p>يقرأ زميلك النص وحده دون الإخفاق، ويقول ما فهمه وما سيفعله.</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>اكتب رسالة البث المنقطع (F12) بالعربية والإنجليزية، مع زر واحد.</p>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>ما الفرق بين الرفض المناسب والرفض غير المناسب في هذه السجلات؟</li>
+    <li>لماذا لا يكفي تحسين الرسالة في F05، ومن يصلح السبب؟</li>
+    <li>في F04 تم الحجز فعلًا. ماذا يجب أن يرى الساكن؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب: مفتاح المختبر</summary>
+    <table class="t small">
+      <tr><th>النوع</th><th>الإخفاقات</th><th>حالة الواجهة المرجعية</th><th>من يصلح السبب</th></tr>
+      <tr><td>خاطئ</td><td>F01، F05، F09، F11</td><td>لا رقم دون مصدر؛ «لا أعرف وقت العودة» مع صفحة الانقطاعات وموظف؛ في F09 يعيد الوكيل التاريخ بالكلمات قبل التنفيذ</td><td>دليل المعرفة (F05 جدول قديم)، فريق المساعد (F01، F11)، فريق الوكيل (F09)</td></tr>
+      <tr><td>رفض مناسب</td><td>F02، F07، F08</td><td>يبقى، مع طريق واحد واضح: تحويل أو صفحة</td><td>لا أحد</td></tr>
+      <tr><td>رفض غير مناسب</td><td>F03، F06</td><td>يجيب من الدليل؛ وحتى يُصلح: «لا أستطيع هنا» مع رابط الصفحة وموظف</td><td>فريق المساعد (حدود الرفض)</td></tr>
+      <tr><td>بطيء</td><td>F04، F12</td><td>مؤشر يقول ما يحدث، ثم حالة صريحة: «تم الحجز» أو «لم يتم»؛ في البث المنقطع: «انقطع الرد» وزر «أعد المحاولة»</td><td>فريق الأنظمة (الجدولة، البث)</td></tr>
+      <tr><td>خارج النطاق</td><td>F10</td><td>«لا أعرف أوقات المكاتب» مع رابط صفحتها في الموقع</td><td>لا أحد، أو إضافة الصفحة إلى الدليل</td></tr>
+    </table>
+    <ul>
+      <li><b>خلاف متوقع:</b> F09 خاطئ وبطيء معًا؛ الخاطئ يضر أكثر. F04 بطيء، لكنه أخطر من بطيء عادي لأن الساكن قد يحجز مرة ثانية: الحالة يجب أن تقول ما تم.</li>
+      <li><b>أخطاء شائعة:</b> عدّ F02 رفضًا غير مناسب لأن الساكن لم يأخذ جوابًا (القاعدة H4 تمنع المساعد من تقرير الأهلية)؛ رسالة واحدة لكل الأنواع.</li>
+      <li><b>فصل المهام:</b> من يكتب حالة الواجهة (فريق المنتج) غير من يصلح السبب، ومن يعتمد أن الإصلاح تم (فريق الجودة بإعادة التقييم).</li>
+      <li>التحقق: <code>uv run labs/solutions/check.py 2.2</code>.</li>
+    </ul>
+  </details>
+</article>
+<nav class="pager"><a href="D2_1_disclosure.html" rel="prev">→ المختبر السابق</a><a href="D2_3_confirm_undo.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع cf6c42b</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T07:20:36Z","version":"2027.1.0","commit":"cf6c42b"},"course":{"id":"lds-prd-203","code":"LDS-PRD-203","title":"تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-prd-203/","repo":"SDAIAAcademy/lds-prd-203","home":"../index.html"},"lab":{"id":"2.2","title":"حالات الإخفاق الاثنتا عشرة","summary":"تقرأ اثني عشر إخفاقًا مسجلًا، وتصنف كلًا منها، وتكتب حالة الواجهة لكل نوع، وتحدد من يصلح السبب","minutes":35,"day":2,"unit":"اليوم 2","session":2,"deck":"../slides/day2.html#lab-2-2","prev":"D2_1_disclosure.html","next":"D2_3_confirm_undo.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>

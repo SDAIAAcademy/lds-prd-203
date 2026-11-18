@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ar" dir="rtl" data-ax="lab" data-track="executives">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المختبر 1.4 · إشارات الثقة في النموذج الأولي · تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم</title>
+<meta name="generator" content="SDAIA Academy engine 1.0.0">
+<link rel="icon" href="../_engine/icon.svg">
+<link rel="alternate" type="text/markdown" href="D1_4_trust_cues.md">
+<link rel="describedby" href="../llms.txt">
+<link rel="stylesheet" href="../_engine/academy.css">
+</head>
+<body>
+<header>
+<div class="wrap">
+<div class="top"><div class="logo"></div><nav><a href="../index.html">صفحة المقرر</a><a href="../slides/day1.html#lab-1-4">العودة إلى الشرائح</a></nav></div>
+<span class="tag">المختبر 1.4</span>
+<h1>إشارات الثقة في النموذج الأولي</h1>
+<p>تبدأ من بيان القدرة المرجعي وشاشات المساعد الحالية، فتعيد كتابة شاشات التعريف الأولي، وتقرر عرض المصادر ورقم الثقة، وتضيف إشارة لكل موضوع ضعيف في الملف content.js، ثم تشرح كل إشارة بدليلها</p>
+<div class="meta"><span>35 دقيقة</span><span>اليوم 1</span><span>الجلسة 4: التعريف الأولي والمصادر وإشارات عدم اليقين</span></div>
+</div>
+</header>
+<main class="wrap">
+<article class="lab" data-lab="1.4">
+  <div class="box goal">
+    <h3>ستخرج من هذا المختبر بـ</h3>
+    <ul>
+      <li>نسختك الأولى من النموذج الأولي: تعريف أولي يقول ما يجيده المساعد وما لا يجيده، ومصادر ظاهرة، وإشارات حيث يضعف.</li>
+      <li>جدول شرح يربط كل تغيير على الشاشة بسطر من بيان القدرة (C01 إلى C08).</li>
+    </ul>
+  </div>
+
+  <h2>ما تحتاجه</h2>
+  <div class="files">
+    <a href="prototype/index.html" target="_blank"><b>prototype/index.html</b><span>النموذج الأولي، يُفتح في المتصفح</span></a>
+    <a href="prototype/content.js" target="_blank"><b>prototype/content.js</b><span>النصوص والإعدادات التي تغيّرها</span></a>
+    <a href="prototype/app.js" target="_blank"><b>prototype/app.js</b><span>سلوك النموذج؛ نزّله مع الملفين ولا تغيّره</span></a>
+    <a href="files/capability_reference.csv" target="_blank"><b>capability_reference.csv</b><span>بيان القدرة المرجعي (ملف البداية)</span></a>
+    <a href="files/screens_current.txt" target="_blank"><b>screens_current.txt</b><span>نصوص الشاشات الحالية</span></a>
+    <a href="files/cue_annotation_template.csv" target="_blank"><b>cue_annotation_template.csv</b><span>جدول الشرح</span></a>
+  </div>
+  <p class="small">نزّل الملفات الثلاثة (<code>index.html</code> و<code>content.js</code> و<code>app.js</code>) في مجلد واحد على جهازك، وافتح <code>content.js</code> بأي محرر نصوص (المفكرة تكفي)، ثم أعد تحميل <code>index.html</code> بعد كل حفظ. من يفضّل أداة تصميم (Penpot أو غيرها) يرسم الشاشات فيها ويملأ جدول الشرح نفسه. سياسة الذكاء الاصطناعي: مساعد مرشد في الخطوات 1 إلى 4؛ ذكاء اصطناعي كامل لصياغة بدائل النصوص في الإضافي، وتدافع أنت عن كل اختيار. احفظ نسختك باسم <code>content-v1.js</code>: سجل نسخ التصميم جزء من تسليم المشروع الختامي.</p>
+
+  <h2>الخطوات</h2>
+
+  <div class="step">
+    <h3>1 · افتح النموذج الأولي واقرأ الشاشات الحالية وبيان القدرة المرجعي <span class="min">5 د</span></h3>
+    <p>مر على شاشات الترحيب الثلاث، ثم اسأل عن آخر يوم للسداد وعن عودة المياه وعن التعرفة. علّم كل جملة على الشاشة يكذّبها سطر في بيان القدرة.</p>
+  </div>
+
+  <div class="step">
+    <h3>2 · أعد كتابة شاشات التعريف الأولي الثلاث في content.js <span class="min">8 د</span></h3>
+    <p>ثلاث جمل قصيرة: ما يجيده، وما لا يجيده بعد وإلى أين يذهب الساكن فيه، وكيف يصل إلى موظف. لا وعد بدقة لا يسندها بيان القدرة.</p>
+  </div>
+
+  <div class="step">
+    <h3>3 · قرر عرض المصادر ورقم الثقة، وغيّر القيمتين <span class="min">5 د</span></h3>
+    <p>القيمتان <code>showSources</code> و<code>showConfidence</code>. القرار يتبع السطرين C02 وC07.</p>
+  </div>
+
+  <div class="step">
+    <h3>4 · أضف إشارة محددة لكل موضوع ضعيف <span class="min">7 د</span></h3>
+    <p>في <code>cautions</code>: نص قصير لكل موضوع يضعف فيه المساعد، يقول ما يفعله الساكن بدل أن يقول «قد أخطئ». مثال الصيغة: <code>outage: 'نص الإشارة'</code>.</p>
+  </div>
+
+  <div class="step">
+    <h3>5 · اشرح كل تغيير بمعرّف دليله في جدول الشرح، واحفظ نسختك <span class="min">10 د</span></h3>
+    <p>لكل صف: الشاشة، والعنصر، والنص الجديد أو السلوك، ومعرّف الدليل (C01 إلى C08)، ولماذا. تغيير بلا دليل يُحذف أو يُعلَّم «فرضية».</p>
+  </div>
+
+  <div class="step stretch">
+    <h3>✱ إضافي</h3>
+    <p>اطلب من نموذج مستضاف ثلاث صيغ لإشارة الانقطاعات، واختر واحدة وعلّل الاختيار بالدليل.</p>
+    <div class="prompt" data-tool="نموذج مستضاف">اكتب ثلاث صيغ قصيرة بالعربية، كل منها أقل من عشرين كلمة، لإشارة تظهر تحت رد مساعد خدمة عملاء لمرفق مياه حين يُسأل عن وقت عودة المياه بعد انقطاع. الإشارة تقول للساكن ما يفعله، ولا تعد بوقت. الدليل: <span class="ph">سطر C03 من بيان القدرة</span>.</div>
+  </div>
+
+  <h2>أسئلة تحقق</h2>
+  <ol class="checks">
+    <li>أي جملة في التعريف الأولي القديم كانت تعد بما لا يسنده الدليل؟</li>
+    <li>ما قرارك في رقم الثقة، وأي سطر من بيان القدرة يسنده؟</li>
+    <li>هل لكل إشارة على الشاشة معرّف دليل في جدولك؟</li>
+  </ol>
+
+  <details class="instructor">
+    <summary>للمدرّب: مفتاح المختبر</summary>
+    <ul>
+      <li><b>النسخة المرجعية:</b> <code>labs/solutions/prototype/content-after-1.4.js</code>. انسخها فوق <code>content.js</code> لتعرضها.</li>
+      <li><b>الشرح المرجعي:</b> O1 (C03، C05): لا وعد بالدقة، وذكر ما يجيده. O2 (C03، C04): أوقات العودة ونقل الخدمة إلى صفحة أو موظف. R1 (C03): إشارة الانقطاع. R2 (C02): المصدر ظاهر. R3 (C07): رقم الثقة يُزال؛ 17 من 112 ردًا بثقة 0.9 فأكثر غير مقبولة.</li>
+      <li><b>أخطاء شائعة:</b> إبقاء «قد يخطئ المساعد» تحت كل رد بدل إشارة محددة (يُعالج في المختبر 2.1)؛ تحويل رقم الثقة إلى «عالية/منخفضة» وهو لا يميز أصلًا؛ وعد «يفهم العربيزي».</li>
+      <li><b>فصل المهام:</b> من يكتب الإشارات غير من يعتمد صحتها: بيان القدرة يراجعه فريق الجودة، والنصوص تعتمدها شهد الشمراني.</li>
+      <li>التحقق: <code>uv run labs/solutions/check.py 1.4</code>.</li>
+    </ul>
+  </details>
+</article>
+<nav class="pager"><a href="D1_3_capability.html" rel="prev">→ المختبر السابق</a><a href="D2_1_disclosure.html" rel="next">المختبر التالي ←</a></nav>
+</main>
+<footer><div class="wrap">أكاديمية سدايا · مسار التنفيذيين والقادة · تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم<br><span class="muted">إصدار المقرر 2027.1.0 · المحرّك 1.0.0 · بُني في ⁦2026-11-18⁩ · الإيداع cf6c42b</span></div></footer>
+<script type="application/json" id="academy-data">{"v":1,"engine":"1.0.0","build":{"at":"2026-11-18T07:20:36Z","version":"2027.1.0","commit":"cf6c42b"},"course":{"id":"lds-prd-203","code":"LDS-PRD-203","title":"تصميم التفاعل بين الإنسان والذكاء الاصطناعي وتجربة المستخدم","track":"executives","lang":"ar","dir":"rtl","url":"https://sdaiaacademy.github.io/lds-prd-203/","repo":"SDAIAAcademy/lds-prd-203","home":"../index.html"},"lab":{"id":"1.4","title":"إشارات الثقة في النموذج الأولي","summary":"تبدأ من بيان القدرة المرجعي وشاشات المساعد الحالية، فتعيد كتابة شاشات التعريف الأولي، وتقرر عرض المصادر ورقم الثقة، وتضيف إشارة لكل موضوع ضعيف في الملف content.js، ثم تشرح كل إشارة بدليلها","minutes":35,"day":1,"unit":"اليوم 1","session":4,"deck":"../slides/day1.html#lab-1-4","prev":"D1_3_capability.html","next":"D2_1_disclosure.html","alt":{}},"ai":{"context":{"course":"../context/course.md","courseJs":"../context/course.js","day":null,"llms":"../llms.txt"},"tasks":[],"tools":[]},"features":{},"strings":{}}</script>
+<script src="../_engine/academy.js"></script>
+</body>
+</html>
