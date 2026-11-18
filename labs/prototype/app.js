@@ -41,7 +41,8 @@
   }
 
   /* ---------- the assistant ---------- */
-  var BILL = { amount: 412, due: 'الاثنين 30 نوفمبر 2026', dueWrong: 'الخميس 10 ديسمبر 2026', account: '3087-11' };
+  var BILL = { amount: 412, due: 'الاثنين 30 نوفمبر 2026', dueWrong: 'الخميس 10 ديسمبر 2026', dueEarly: 'الاثنين 23 نوفمبر 2026', account: '3087-11' };
+  var wantsPlan = false;
   var fallbacks = 0;
 
   function intent(text) {
@@ -60,20 +61,19 @@
   function reply(kind) {
     switch (kind) {
       case 'bill':
-        return { text: 'آخر يوم لسداد فاتورتك الحالية (' + BILL.amount + ' ريالًا) هو ' + (seeded('E1') ? BILL.dueWrong : BILL.due) + '.',
+        return { text: 'آخر يوم لسداد فاتورتك الحالية (' + BILL.amount + ' ريالًا) هو ' + (seeded('E1') ? BILL.dueWrong : seeded('E4') ? BILL.dueEarly : BILL.due) + '.',
           source: 'صفحة الفاتورة، نوفمبر 2026', conf: 0.94 };
       case 'outage':
-        return { text: 'ستعود المياه إلى ' + (seeded('E4') ? 'حي الربوة' : 'حيك') + ' خلال ساعتين.', source: '', conf: 0.91 };
+        return { text: 'ستعود المياه إلى حيك خلال ساعتين.', source: '', conf: 0.91 };
       case 'tariff':
         return { text: 'تعرفة الشريحة الثانية 4 ريالات للمتر المكعب.',
-          source: seeded('E7') ? 'دليل التعرفة، الشريحة الثالثة' : 'دليل التعرفة، الشريحة الثانية', conf: 0.95 };
+          source: 'دليل التعرفة، الشريحة الثانية', conf: 0.95 };
       case 'moving':
         return { text: 'عذرًا، لا أستطيع المساعدة في هذا الطلب.', source: '', conf: 0.88 };
       case 'plan':
         if (seeded('E3')) return { text: 'حوّلتك إلى موظف الفوترة، وسيتواصل معك قريبًا.', source: '', conf: 0.9, falseHandoff: true };
         return { text: 'لا أستطيع تحديد الأهلية لخطط السداد. يمكنني تحويلك إلى موظف الفوترة الآن.', source: '', conf: 0.9, offerPerson: true };
       case 'reading':
-        if (seeded('E9')) return { text: 'تم إرسال قراءتك.', source: '', conf: 0.93 };
         return { text: 'أرسل صورة العداد من شاشة القراءة في التطبيق، وسأملأ الرقم لتتأكد منه.', source: '', conf: 0.9 };
       case 'book':
         return { text: 'افتح «مواعيدي» لاختيار الفترة، أو اضغط الزر أدناه.', source: '', conf: 0.96, offerBooking: true };
@@ -144,15 +144,20 @@
     if (!text.trim()) return;
     bubble('user', text);
     var kind = intent(text);
+    if (/تقسيط|خطة|plan|instal/.test(text.toLowerCase())) wantsPlan = true;
     note('ask:' + kind);
     if (kind === 'person') { handoff('chat'); return; }
     stream(reply(kind), kind);
   }
 
   /* ---------- hand-off ---------- */
+  /* E3 (lab 3.3) and E7 (capstone pool) show on every route to a person: the chat, the reply's
+     button, the menu and the always-visible button. */
   function handoff(from) {
     note('handoff:' + from);
-    var div = bubble('ai', 'أنشأتُ طلب تحويل رقم HT-5521. سيتصل بك موظف خلال يوم عمل، ويرى ما كتبته هنا.');
+    if (seeded('E3')) { note('false-handoff'); bubble('ai', 'حوّلتك إلى موظف الفوترة، وسيتواصل معك قريبًا.'); return; }
+    var topic = seeded('E7') ? 'نقل الخدمة' : (wantsPlan || from === 'plan' ? 'خطة سداد' : 'استفسار عام');
+    var div = bubble('ai', 'أنشأتُ طلب تحويل رقم HT-5521، الموضوع: ' + topic + '. سيتصل بك موظف خلال يوم عمل، ويرى ما كتبته هنا.');
     div.classList.add('handoff');
   }
 
@@ -269,14 +274,17 @@
   }
 
   function cancelVisit() {
-    var fee = booking.day.tomorrow && !seeded('E5');
+    var fee = booking.day.tomorrow;
+    var di = DAYS.indexOf(booking.day);
+    var named = seeded('E9') ? DAYS[(di + 1) % DAYS.length] : booking.day;
     booking.cancelled = true;
     note('cancelled');
-    renderBooking(fee ? 'أُلغيت الزيارة. رسوم الإلغاء المتأخر 75 ريالًا تُضاف إلى فاتورتك.' : 'أُلغيت الزيارة. لا رسوم.');
+    renderBooking('أُلغيت زيارة ' + named.label + '. ' + (fee ? 'رسوم الإلغاء المتأخر 75 ريالًا تُضاف إلى فاتورتك.' : 'لا رسوم.'));
   }
 
   function undoCancel() {
     booking.cancelled = false;
+    if (seeded('E5')) booking.win = booking.win[0] === 'am' ? ['pm', 'م', 'مسائية'] : ['am', 'ص', 'صباحية'];
     note('undo-cancel');
     renderBooking('أُعيدت الزيارة كما كانت.');
   }

@@ -224,7 +224,25 @@ def lab_3_3():
     js = (PROTO / 'content.js').read_text(encoding='utf-8')
     assert re.search(r"seeded:\s*\['E1', 'E2', 'E3'\]", js), 'the lab runs with E1 to E3'
     print('3.3 seeded errors in the lab:', {k: P.SEEDED[k] for k in ('E1', 'E2', 'E3')})
-    print('3.3 pool for the capstone:', sorted(k for k in P.SEEDED if k not in ('E1', 'E2', 'E3')))
+    app = (PROTO / 'app.js').read_text(encoding='utf-8')
+
+    def body(name):
+        m = re.search(r'\n  function ' + name + r'\(.*?(?=\n  function |\n  /\* -)', app, re.S)
+        assert m, name
+        return m.group(0)
+    where = {'T1': re.search(r"case 'bill':.*?case 'outage'", app, re.S).group(0),
+             'T2': body('summary'),
+             'T3': body('cancelVisit') + body('undoCancel'),
+             'T4': body('handoff')}
+    pool = sorted(k for k in P.SEEDED if k not in ('E1', 'E2', 'E3'))
+    assert sorted(P.POOL_TASK) == pool
+    for e, t in sorted(P.POOL_TASK.items()):
+        assert f"seeded('{e}')" in where[t], f'{e} is not reached in {t}'
+        assert app.count(f"seeded('{e}')") == 1, f'{e} also shows outside {t}'
+    assert "seeded('E3')" in where['T4'], 'E3 shows on every route to a person'
+    tasks_per_error = {e: P.POOL_TASK[e] for e in pool}
+    print('3.3 pool for the capstone, each reached in its task:', tasks_per_error)
+    print('3.3 pool tasks covered:', sorted(set(tasks_per_error.values())))
 
 
 def lab_3_4():
@@ -237,6 +255,11 @@ def lab_3_4():
     print('3.4 by task:', {k: f'{v[0]}/{v[1]}' for k, v in m['by_task'].items()})
     print('3.4 accepted seeded errors:', share(*m['overreliance']), 'by error:', m['by_error'])
     print('3.4 T3 recovery seconds:', m['recovery'], 'median', m['recovery_median'], '| recovered', f"{m['recovery_done'][0]}/5")
+    per_session = {}
+    for r in ses:
+        per_session[r[0]] = per_session.get(r[0], 0) + int(r[6])
+    assert max(per_session.values()) <= 8 * 60, 'a session needs more than the 8 task minutes of the capstone round'
+    print('3.4 task minutes per session:', {k: round(v / 60, 1) for k, v in per_session.items()}, '(capstone window 8)')
 
 
 LABS_FN = {'1.1': lab_1_1, '1.2': lab_1_2, '1.3': lab_1_3, '1.4': lab_1_4, '2.1': lab_2_1, '2.2': lab_2_2,
