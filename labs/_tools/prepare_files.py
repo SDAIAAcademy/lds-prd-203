@@ -380,7 +380,7 @@ A11Y_KEY = [
     ('X5', 'إطار التركيز ملغى في الأزرار والخانات', '2.4.7 Focus Visible', 'AA'),
     ('X6', 'نافذة التأكيد لا يذهب إليها التركيز، ولا تُغلق بمفتاح Esc', '2.4.3 Focus Order', 'A'),
     ('X7', 'لغة الصفحة معلنة إنجليزية والمحتوى عربي؛ العبارات الإنجليزية غير معلّمة', '3.1.1 Language of Page، 3.1.2 Language of Parts', 'A و AA'),
-    ('X8', 'أزرار الفترات 20 × 20 بكسلًا', '2.5.8 Target Size (Minimum)', 'AA'),
+    ('X8', 'أزرار الفترات 20 × 20 بكسلًا بينها 2 بكسل', '2.5.8 Target Size (Minimum)', 'AA'),
     ('X9', 'خطأ «الفترة محجوزة» يظهر بإطار أحمر فقط، دون نص', '3.3.1 Error Identification', 'A'),
 ]
 LOW_CONTRAST = ('#a3a3a3', '#ffffff')  # X4: the secondary text colour on white

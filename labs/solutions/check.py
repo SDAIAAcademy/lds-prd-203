@@ -239,7 +239,8 @@ def lab_3_3():
     for e, t in sorted(P.POOL_TASK.items()):
         assert f"seeded('{e}')" in where[t], f'{e} is not reached in {t}'
         assert app.count(f"seeded('{e}')") == 1, f'{e} also shows outside {t}'
-    assert "seeded('E3')" in where['T4'], 'E3 shows on every route to a person'
+    assert 'falseOnce()' in where['T4'] and "seeded('E3')" in body('falseOnce'), 'E3 shows on every route to a person'
+    assert 'e3Shown = true' in body('falseOnce'), 'E3 shows on the first attempt only: a retry reaches a person'
     tasks_per_error = {e: P.POOL_TASK[e] for e in pool}
     print('3.3 pool for the capstone, each reached in its task:', tasks_per_error)
     print('3.3 pool tasks covered:', sorted(set(tasks_per_error.values())))

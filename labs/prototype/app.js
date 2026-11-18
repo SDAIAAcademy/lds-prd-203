@@ -71,7 +71,7 @@
       case 'moving':
         return { text: 'عذرًا، لا أستطيع المساعدة في هذا الطلب.', source: '', conf: 0.88 };
       case 'plan':
-        if (seeded('E3')) return { text: 'حوّلتك إلى موظف الفوترة، وسيتواصل معك قريبًا.', source: '', conf: 0.9, falseHandoff: true };
+        if (falseOnce()) return { text: 'حوّلتك إلى موظف الفوترة، وسيتواصل معك قريبًا.', source: '', conf: 0.9, falseHandoff: true };
         return { text: 'لا أستطيع تحديد الأهلية لخطط السداد. يمكنني تحويلك إلى موظف الفوترة الآن.', source: '', conf: 0.9, offerPerson: true };
       case 'reading':
         return { text: 'أرسل صورة العداد من شاشة القراءة في التطبيق، وسأملأ الرقم لتتأكد منه.', source: '', conf: 0.9 };
@@ -152,10 +152,18 @@
 
   /* ---------- hand-off ---------- */
   /* E3 (lab 3.3) and E7 (capstone pool) show on every route to a person: the chat, the reply's
-     button, the menu and the always-visible button. */
+     button, the menu and the always-visible button. E3 shows on the first attempt only, so a
+     participant who doubts it and tries again gets a real hand-off. */
+  var e3Shown = false;
+  function falseOnce() {
+    if (!seeded('E3') || e3Shown) return false;
+    e3Shown = true;
+    note('false-handoff');
+    return true;
+  }
   function handoff(from) {
     note('handoff:' + from);
-    if (seeded('E3')) { note('false-handoff'); bubble('ai', 'حوّلتك إلى موظف الفوترة، وسيتواصل معك قريبًا.'); return; }
+    if (falseOnce()) { bubble('ai', 'حوّلتك إلى موظف الفوترة، وسيتواصل معك قريبًا.'); return; }
     var topic = seeded('E7') ? 'نقل الخدمة' : (wantsPlan || from === 'plan' ? 'خطة سداد' : 'استفسار عام');
     var div = bubble('ai', 'أنشأتُ طلب تحويل رقم HT-5521، الموضوع: ' + topic + '. سيتصل بك موظف خلال يوم عمل، ويرى ما كتبته هنا.');
     div.classList.add('handoff');
